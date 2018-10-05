@@ -31,7 +31,6 @@ fun isOneEditAway(s1: String, s2: String): Boolean {
     var fsIndex = 0
     var ssIndex = 0
 
-
     // get if they're one diff away
     var hasOneDiff = false
     while (fsIndex < firstString.length && ssIndex < secondString.length) {
@@ -42,12 +41,14 @@ fun isOneEditAway(s1: String, s2: String): Boolean {
                 return false
             }
             hasOneDiff = true
-            ssIndex++
-            if(firstString.length == secondString.length){
-                // if they're the same length and have only one difference
-                // all the others should be the same
+
+            // if the strings are the same length and have only one difference
+            // all the others should be the same. We can jump the letter checked
+            // and compare both strings with the next
+            if(firstString.length == secondString.length) {
                 fsIndex++
             }
+            ssIndex++
         }else{
             fsIndex++
             ssIndex++
